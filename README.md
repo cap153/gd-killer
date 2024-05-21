@@ -15,3 +15,5 @@
 ```python
 python gd_killer.py
 ```
+
+【京东抢购秒杀，基于DrissionPage的python脚本】 https://www.bilibili.com/video/BV1wJ4m1P7ky/?share_source=copy_web&vd_source=d34abe3786a6b85ecc07875a85795885
