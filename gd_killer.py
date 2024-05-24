@@ -25,7 +25,7 @@ while(True):
     # 判断当前时间是否到达了秒杀时间
     if(now>kill_time):
         # 点击结算按钮
-        cart.ele('x://*[@id="cart-body"]/div[2]/div[5]/div/div[2]/div/div/div/div/div[2]/div/div[1]/a/b').click()
+        cart.ele('去结算').click()
         # 点击提交订单
         cart.ele('x://*[@id="order-submit"]/b').click()
         # 点击立即支付
