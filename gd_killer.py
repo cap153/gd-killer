@@ -13,10 +13,6 @@ page.get("https://www.jd.com")
 cart = page.ele('x://*[@id="settleup"]/div[1]/a').click.for_new_tab()
 # 等待登录完成，直到购物车全选按钮出现，超时时间我设置为1分钟
 cart.wait.ele_displayed('x://*[@id="cart-body"]/div[2]/div[4]/div[1]/div/input',timeout=60)
-# 判断商品是否全选(京东购物车会记住上次选择的商品)
-if cart.ele('x://*[@id="cart-body"]/div[2]/div[4]/div[1]/div/input').attr('clstag').split('|')[-1].startswith('0'):
-    # 没有全选的情况，点击购物车全选按钮
-    cart.ele('x://*[@id="cart-body"]/div[2]/div[4]/div[1]/div/input').click()
 
 while(True):
     # 获取当前时间
@@ -24,6 +20,10 @@ while(True):
     print(now) # 打印当前时间测试
     # 判断当前时间是否到达了秒杀时间
     if(now>kill_time):
+        # 判断商品是否全选(京东购物车会记住上次选择的商品)
+        if cart.ele('x://*[@id="cart-body"]/div[2]/div[4]/div[1]/div/input').attr('clstag').split('|')[-1].startswith('0'):
+            # 没有全选的情况，点击购物车全选按钮
+            cart.ele('x://*[@id="cart-body"]/div[2]/div[4]/div[1]/div/input').click()
         # 点击结算按钮
         cart.ele('去结算').click()
         # 点击提交订单
