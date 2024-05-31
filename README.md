@@ -4,9 +4,9 @@
 
 # 安装环境
 
-1. 自行安装谷歌浏览器
+1. 自行安装谷歌浏览器，如果已安装谷歌浏览器还是运行不了，又或者想使用edge等其他谷歌内核浏览器，可以手动设置浏览器路径，详见[https://www.drissionpage.cn/get_start/before_start](https://www.drissionpage.cn/get_start/before_start)
 2. 自行安装python
-3. 使用 pip 安装 DrissionPage：`pip install DrissionPage`
+3. 使用 pip 安装 DrissionPage：`pip install DrissionPage`，如果安装失败，可以尝试换国内的豆瓣源试试，对应命令如下`pip install -i http://pypi.douban.com/simple DrissionPage --trusted-host pypi.douban.com --user`
 
 # 使用
 
