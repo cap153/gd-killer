@@ -2,10 +2,10 @@ from DrissionPage import ChromiumPage
 import datetime
 
 # 创建对象
-page = ChromiumPage()
+page = ChromiumPage(9224)
 
 # 指定秒杀时间
-kill_time = "2024-04-27 11:53:00.00000000"
+kill_time = "2024-05-31 20:00:00.00000000"
 
 # 打开京东网页
 page.get("https://www.jd.com")
