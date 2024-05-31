@@ -38,7 +38,7 @@ while(True):
         break
     # 判断当前秒数是不是0，实现间隔一分钟刷新页面，防止掉登录(京东购物车会记住上次选择的商品)
     if(datetime.datetime.now().second == 0):
-        page.refresh() # DrissionPage的页面刷新方法，内置了wait.load_start()程序会自动等待加载结束
+        cart.refresh() # DrissionPage的页面刷新方法，内置了wait.load_start()程序会自动等待加载结束
 
 # 测试时的程序暂停
 input()
