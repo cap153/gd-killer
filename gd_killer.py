@@ -5,7 +5,7 @@ import datetime
 page = ChromiumPage(9224)
 
 # 指定秒杀时间
-kill_time = "2024-05-31 21:25:00.00000000"
+kill_time = "2024-06-01 10:25:00.00000000"
 
 # 打开京东网页
 page.get("https://www.jd.com")
@@ -42,15 +42,15 @@ while(True):
             print("%s\n发生了错误，请手动完成后续步骤"%err+input())
     # 判断当前秒数是不是0，实现间隔一分钟刷新页面，防止掉登录(京东购物车会记住上次选择的商品)
     if(datetime.datetime.now().second == 0):
-        cart.refresh() # DrissionPage的页面刷新方法，内置了wait.load_start()程序会自动等待加载结束
         while(True):
+            cart.refresh() # DrissionPage的页面刷新方法，内置了wait.load_start()程序会自动等待加载结束
             try:
                 # 等待全选按钮加载
                 cart.wait.ele_displayed('x://*[@id="cart-body"]/div[2]/div[4]/div[1]/div/input')
-                break
+                break # 按钮加载成功说明没有问题，跳出循环
             except:
                 # 没有成功加载按钮说明出现了错误，无论什么错误都再次刷新页面
-                cart.refresh() # DrissionPage的页面刷新方法，内置了wait.load_start()程序会自动等待加载结束
+                continue
 
 # 成功的信息输出和测试时的程序暂停
 input('恭喜，抢购成功')
