@@ -22,7 +22,7 @@ while(True):
     if(now>kill_time):
         try:
             # 判断商品是否全选(京东购物车会记住上次选择的商品)
-            if cart.ele('x://*[@id="cart-body"]/div[2]/div[4]/div[1]/div/input').attr('clstag').split('|')[-1].startswith('0'):
+            while cart.ele('x://*[@id="cart-body"]/div[2]/div[4]/div[1]/div/input').attr('clstag').split('|')[-1].startswith('0'):
                 # 没有全选的情况，点击购物车全选按钮
                 cart.ele('x://*[@id="cart-body"]/div[2]/div[4]/div[1]/div/input').click()
             # 点击结算按钮
