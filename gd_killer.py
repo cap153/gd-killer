@@ -28,6 +28,7 @@ while(True):
             # 点击结算按钮
             cart.ele('去结算').click()
             # 点击提交订单
+            cart.wait.ele_displayed('x://*[@id="order-submit"]/b', timeout=60) # 等待提交订单按钮完全加载
             cart.ele('x://*[@id="order-submit"]/b').click()
             # 点击立即支付
             cart.ele('x://*[@id="indexBlurId"]/div[2]/div[1]/div[2]/div/div[2]/div[2]/div[2]/div/div/div[1]').click()
