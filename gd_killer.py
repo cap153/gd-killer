@@ -25,6 +25,10 @@ while(True):
             while cart.ele('x://*[@id="cart-body"]/div[2]/div[4]/div[1]/div/input').attr('clstag').split('|')[-1].startswith('0'):
                 # 没有全选的情况，点击购物车全选按钮
                 cart.ele('x://*[@id="cart-body"]/div[2]/div[4]/div[1]/div/input').click()
+            # 二次判断消抖，如果商品可以被全选并跳出循环，意味着仅存在预约的商品情况时到达了秒杀时间，预约商品可以被选中
+            if cart.ele('x://*[@id="cart-body"]/div[2]/div[4]/div[1]/div/input').attr('clstag').split('|')[-1].startswith('0'):
+                # 没有全选的情况，点击购物车全选按钮
+                cart.ele('x://*[@id="cart-body"]/div[2]/div[4]/div[1]/div/input').click()
             # 点击结算按钮
             cart.ele('去结算').click()
             # 点击提交订单
