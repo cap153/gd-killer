@@ -10,7 +10,7 @@ kill_time = "2024-06-01 10:25:00.00000000"
 # 打开京东网页
 page.get("https://www.jd.com")
 # 点击购物车
-cart = page.ele('x://*[@id="settleup"]/div[1]/a').click.for_new_tab()
+cart = page.ele('我的购物车').click.for_new_tab()
 # 等待登录完成，直到购物车全选按钮出现，超时时间我设置为1分钟
 cart.wait.ele_displayed('x://*[@id="cart-body"]/div[2]/div[4]/div[1]/div/input',timeout=60)
 
