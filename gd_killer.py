@@ -29,6 +29,8 @@ while(True):
             if cart.ele('x://*[@id="cart-body"]/div[2]/div[4]/div[1]/div/input').attr('clstag').split('|')[-1].startswith('0'):
                 # 没有全选的情况，点击购物车全选按钮
                 cart.ele('x://*[@id="cart-body"]/div[2]/div[4]/div[1]/div/input').click()
+            # 如果订单结算时要输入密码，可以取消注释下面的代码，并更改123456为你自己的支付密码
+            # cart.ele('.quark-pw-result-input').input("123456")
             # 点击结算按钮
             cart.ele('去结算').click()
             # 点击提交订单
@@ -36,9 +38,9 @@ while(True):
             cart.ele('x://*[@id="order-submit"]/b').click()
             # 点击立即支付
             cart.ele('x://*[@id="indexBlurId"]/div[2]/div[1]/div[2]/div/div[2]/div[2]/div[2]/div/div/div[1]').click()
-            # 自动填充密码(需要修改成你自己的支付密码)
+            # 自动填充密码(需要取消注释下面的代码，修改成你自己的支付密码)
             # cart.ele('x://*[@id="validateShortFake"]').input('123456')
-            # 点击立即支付
+            # 点击立即支付(需要取消注释下面的代码)
             # cart.ele('x://*[@id="baseMode"]/div/div[2]/div/div[2]/div/div/div[1]').click()
             break
         except Exception as err:
