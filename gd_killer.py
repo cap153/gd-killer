@@ -29,10 +29,10 @@ while(True):
             if cart.ele('x://*[@id="cart-body"]/div[2]/div[4]/div[1]/div/input').attr('clstag').split('|')[-1].startswith('0'):
                 # 没有全选的情况，点击购物车全选按钮
                 cart.ele('x://*[@id="cart-body"]/div[2]/div[4]/div[1]/div/input').click()
-            # 如果订单结算时要输入密码，可以取消注释下面的代码，并更改123456为你自己的支付密码
-            # cart.ele('.quark-pw-result-input').input("123456")
             # 点击结算按钮
             cart.ele('去结算').click()
+            # 如果订单结算时要输入密码，可以取消注释下面的代码，并更改123456为你自己的支付密码
+            # cart.ele('.quark-pw-result-input').input("123456")
             # 点击提交订单
             cart.wait.ele_displayed('x://*[@id="order-submit"]/b', timeout=60) # 等待提交订单按钮完全加载
             cart.ele('x://*[@id="order-submit"]/b').click()
