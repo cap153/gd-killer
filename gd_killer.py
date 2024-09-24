@@ -1,4 +1,5 @@
 from DrissionPage import ChromiumPage
+from DrissionPage.common import Settings
 import datetime
 
 # 创建对象
@@ -25,12 +26,16 @@ while(True):
             while cart.ele('x://*[@id="cart-body"]/div[2]/div[4]/div[1]/div/input').attr('clstag').split('|')[-1].startswith('0'):
                 # 没有全选的情况，点击购物车全选按钮
                 cart.ele('x://*[@id="cart-body"]/div[2]/div[4]/div[1]/div/input').click()
-            # 二次判断消抖，如果商品可以被全选并跳出循环，意味着仅存在预约的商品情况时到达了秒杀时间，预约商品可以被选中
-            if cart.ele('x://*[@id="cart-body"]/div[2]/div[4]/div[1]/div/input').attr('clstag').split('|')[-1].startswith('0'):
-                # 没有全选的情况，点击购物车全选按钮
-                cart.ele('x://*[@id="cart-body"]/div[2]/div[4]/div[1]/div/input').click()
             # 点击结算按钮
             cart.ele('去结算').click()
+            # 开启找不到元素立即抛出异常，用于勾选全选按钮的判断
+            Settings.raise_when_ele_not_found = True
+            if cart.ele('知道了'):# 根据没有选择商品的弹窗来判断是否全选商品
+                cart.ele('知道了').click()
+                cart.ele('x://*[@id="cart-body"]/div[2]/div[4]/div[1]/div/input').click()
+                cart.ele('去结算').click()
+            # 关闭找不到元素立即抛出异常，确保后续页面有足够时间正常加载
+            Settings.raise_when_ele_not_found = False
             # 如果订单结算时要输入密码，可以取消注释下面的代码，并更改123456为你自己的支付密码
             # cart.ele('.quark-pw-result-input').input("123456")
             # 点击提交订单
