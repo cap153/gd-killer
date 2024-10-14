@@ -3,15 +3,12 @@ from DrissionPage.common import Settings
 import datetime
 
 # 创建对象
-page = ChromiumPage(9224)
+cart = ChromiumPage(9224)
 
 # 指定秒杀时间
 kill_time = "2024-06-01 10:25:00.00000000"
 
-# 打开京东网页
-page.get("https://www.jd.com")
-# 点击购物车
-cart = page.ele('我的购物车').click.for_new_tab()
+cart.get("https://cart.jd.com/cart_index")
 # 等待登录完成，直到购物车全选按钮出现，超时时间我设置为1分钟
 cart.wait.ele_displayed('x://*[@id="cart-body"]/div[2]/div[4]/div[1]/div/input',timeout=60)
 
@@ -29,13 +26,13 @@ while(True):
             # 点击结算按钮
             cart.ele('去结算').click()
             # 开启找不到元素立即抛出异常，用于勾选全选按钮的判断
-            Settings.raise_when_ele_not_found = True
-            if cart.ele('知道了'):# 根据没有选择商品的弹窗来判断是否全选商品
-                cart.ele('知道了').click()
-                cart.ele('x://*[@id="cart-body"]/div[2]/div[4]/div[1]/div/input').click()
-                cart.ele('去结算').click()
-            # 关闭找不到元素立即抛出异常，确保后续页面有足够时间正常加载
-            Settings.raise_when_ele_not_found = False
+            # Settings.raise_when_ele_not_found = True
+            # if cart.ele('知道了'):# 根据没有选择商品的弹窗来判断是否全选商品
+            #     cart.ele('知道了').click()
+            #     cart.ele('x://*[@id="cart-body"]/div[2]/div[4]/div[1]/div/input').click()
+            #     cart.ele('去结算').click()
+            # # 关闭找不到元素立即抛出异常，确保后续页面有足够时间正常加载
+            # Settings.raise_when_ele_not_found = False
             # 如果订单结算时要输入密码，可以取消注释下面的代码，并更改123456为你自己的支付密码
             # cart.ele('.quark-pw-result-input').input("123456")
             # 点击提交订单
